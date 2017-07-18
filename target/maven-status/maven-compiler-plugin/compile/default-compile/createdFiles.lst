@@ -1,0 +1,9 @@
+com\mstanciu\controller\UserController.class
+com\mstanciu\config\AppConfig.class
+com\mstanciu\dao\UserDao.class
+com\mstanciu\service\UserService.class
+com\mstanciu\model\User.class
+com\mstanciu\service\impl\UserServiceImpl.class
+com\mstanciu\dao\impl\UserDaoImpl.class
+com\mstanciu\config\HibernateConfiguration.class
+com\mstanciu\config\AppInitializer.class
