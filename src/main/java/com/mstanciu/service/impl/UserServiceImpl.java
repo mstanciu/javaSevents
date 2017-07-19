@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
-	
+
 	@Override
 	public void add(User u) {
 		userDao.add(u);
@@ -33,13 +33,29 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUser(int user) {
-		return userDao.getUser(user);
+	public User getUser(int userId) {
+		return userDao.getUser(userId);
 	}
 
 	@Override
 	public List<User> getAllUsers() {
 		return userDao.getAllUsers();
+	}
+
+	@Override
+	public List<User> getUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userDao.getUserByEmail(email);
+	}
+
+	@Override
+	public User getUserByAge(int age) {
+		return userDao.getUserByAge(age);
+	}
+
+	@Override
+	public boolean login(String email, String password) {
+		return userDao.login(email, password);
 	}
 
 }
