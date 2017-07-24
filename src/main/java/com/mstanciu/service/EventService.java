@@ -5,6 +5,7 @@ import java.util.List;
 import com.mstanciu.model.Event;
 
 public interface EventService {
+
 	public void add(Event u);
 
 	public void edit(Event u);

@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,18 +37,6 @@ public class UserController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(ucBuilder.path("/register/{email}").buildAndExpand(user.getEmail()).toUri());
 		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
-	}
-
-	@RequestMapping(value = "/login/{email}", method = RequestMethod.GET)
-	public User getUser(@PathVariable("email") String email) {
-		email += ".com";
-		System.out.println(email + "<---------------");
-		List<User> resultUser = userService.getUserByEmail(email);
-		if (resultUser.isEmpty()) {
-			return null;
-		}
-		User user = resultUser.get(0);
-		return user;
 	}
 
 	@RequestMapping(value = { "/login/login" }, method = RequestMethod.POST, produces = {
