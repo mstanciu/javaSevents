@@ -27,7 +27,6 @@ public class UserController {
 	@RequestMapping(value = { "/list" }, method = RequestMethod.GET)
 	public List<User> setupForm(ModelMap map) {
 		return userService.getAllUsers();
-
 	}
 
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST, produces = {
@@ -51,7 +50,5 @@ public class UserController {
 		}
 
 		return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
-
 	}
-
 }
