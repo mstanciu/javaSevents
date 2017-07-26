@@ -8,4 +8,6 @@ public interface User_friendDao {
 
 	public List<User> getAllFriends(int id_user);
 
+	public int unfriend(int id_user, int id_friend);
+
 }

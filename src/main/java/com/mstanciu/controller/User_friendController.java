@@ -22,8 +22,19 @@ public class User_friendController {
 
 	@RequestMapping(value = { "/account/friends/listFriends" }, method = RequestMethod.POST, produces = {
 			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public List<User> getSpecificEvents(@RequestBody User_friend uf, UriComponentsBuilder ucBuilder) {
+	public List<User> getFriends(@RequestBody User_friend uf, UriComponentsBuilder ucBuilder) {
 		List<User> results = ufs.getAllFriends(uf.getId_user());
 		return results;
 	}
+
+	@RequestMapping(value = { "/account/friends/unfriend" }, method = RequestMethod.POST, produces = {
+			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public boolean unfriend(@RequestBody User_friend uf, UriComponentsBuilder ucBuilder) {
+		int results = ufs.unfriend(uf.getId_user(), uf.getId_friend());
+		if (results > 0) {
+			return true;
+		}
+		return false;
+	}
+
 }

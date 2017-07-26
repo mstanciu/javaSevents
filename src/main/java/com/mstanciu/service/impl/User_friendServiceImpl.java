@@ -22,4 +22,9 @@ public class User_friendServiceImpl implements User_friendService {
 		return ufd.getAllFriends(id_user);
 	}
 
+	@Override
+	public int unfriend(int id_user, int id_friend) {
+		return ufd.unfriend(id_user, id_friend);
+	}
+
 }

@@ -61,7 +61,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean login(String email, String password) {
+	public User login(String email, String password) {
 		Criteria cr = session.getCurrentSession().createCriteria(User.class);
 
 		Criterion emailCr = Restrictions.eq("email", email);
@@ -72,11 +72,12 @@ public class UserDaoImpl implements UserDao {
 		cr.add(orExp);
 
 		List results = cr.list();
+		System.out.println(results.toString());
 		if (results.isEmpty()) {
-			return false;
+			return null;
 		}
 
-		return true;
+		return (User) results.get(0);
 	}
 
 }

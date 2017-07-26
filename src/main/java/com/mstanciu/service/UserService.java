@@ -19,6 +19,6 @@ public interface UserService {
 
 	public List<User> getAllUsers();
 
-	public boolean login(String email, String password);
+	public User login(String email, String password);
 
 }

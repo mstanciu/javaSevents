@@ -1,5 +1,6 @@
 package com.mstanciu.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,15 +41,18 @@ public class UserController {
 
 	@RequestMapping(value = { "/login/login" }, method = RequestMethod.POST, produces = {
 			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<?> login(@RequestBody User user, UriComponentsBuilder ucBuilder) {
-		boolean flag = userService.login(user.getEmail(), user.getPassword());
-		HttpHeaders headers = new HttpHeaders();
-		if (flag) {
-			headers.setLocation(
-					ucBuilder.path("/login/login").buildAndExpand(user.getEmail() + user.getPassword()).toUri());
-			return new ResponseEntity<String>(headers, HttpStatus.OK);
+	public List<String> login(@RequestBody User user, UriComponentsBuilder ucBuilder) {
+		User result = userService.login(user.getEmail(), user.getPassword());
+		List<String> info = new ArrayList();
+		info.add(result.getId_user() + "");
+		info.add(result.getEmail());
+		info.add(result.getFirstName());
+		info.add(result.getLastName());
+		info.add(result.getAge() + "");
+		info.add(result.getGender());
+		if (result != null) {
+			return info;
 		}
-
-		return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
+		return null;
 	}
 }
