@@ -46,9 +46,10 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getUserByEmail(String email) {
-		String hql = "FROM User E WHERE E.email = :user_email";
+		String hql = "FROM com.mstanciu.model.User E WHERE E.email = :user_email";
 		Query query = session.getCurrentSession().createQuery(hql);
 		query.setParameter("user_email", email);
+		System.out.println(email + "---------------------------<");
 		return query.list();
 	}
 

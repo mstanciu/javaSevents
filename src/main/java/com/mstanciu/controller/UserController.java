@@ -55,4 +55,13 @@ public class UserController {
 		}
 		return null;
 	}
+
+	@RequestMapping(value = { "/friendSearch" }, method = RequestMethod.POST, produces = {
+			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public User searchUser(@RequestBody User user) {
+		List<User> result = userService.getUserByEmail(user.getEmail());
+		System.out.println(user.getEmail() + result.size());
+		return result.remove(0);
+
+	}
 }

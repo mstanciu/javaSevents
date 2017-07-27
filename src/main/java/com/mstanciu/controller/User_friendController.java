@@ -37,4 +37,31 @@ public class User_friendController {
 		return false;
 	}
 
+	@RequestMapping(value = { "/account/friends/addFriend" }, method = RequestMethod.POST, produces = {
+			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public void addFriend(@RequestBody User_friend uf, UriComponentsBuilder ucBuilder) {
+		ufs.addFriend(uf);
+	}
+
+	@RequestMapping(value = { "/account/friends/listFriends/pending" }, method = RequestMethod.POST, produces = {
+			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public List<User> getPendingFriends(@RequestBody User_friend uf, UriComponentsBuilder ucBuilder) {
+		List<User> results = ufs.getPendingFriends(uf.getId_user());
+		return results;
+	}
+
+	@RequestMapping(value = { "/account/friends/listFriends/accepted" }, method = RequestMethod.POST, produces = {
+			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public int acceptFriend(@RequestBody User_friend uf, UriComponentsBuilder ucBuilder) {
+		int results = ufs.accept(uf.getId_user(), uf.getId_friend());
+		return results;
+	}
+
+	@RequestMapping(value = { "/account/friends/listFriends/rejected" }, method = RequestMethod.POST, produces = {
+			MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public int rejectFriend(@RequestBody User_friend uf, UriComponentsBuilder ucBuilder) {
+		int results = ufs.reject(uf.getId_user(), uf.getId_friend());
+		return results;
+	}
+
 }

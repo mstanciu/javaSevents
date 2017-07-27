@@ -14,10 +14,32 @@ public class User_friend {
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id_entrance;
+
+	@Column
 	private int id_user;
 
 	@Column
 	private int id_friend;
+
+	@Column
+	private int pending;
+
+	public int getPending() {
+		return pending;
+	}
+
+	public void setPending(int pending) {
+		this.pending = pending;
+	}
+
+	public int getId_entrance() {
+		return id_entrance;
+	}
+
+	public void setId_entrance(int id_entrance) {
+		this.id_entrance = id_entrance;
+	}
 
 	public int getId_user() {
 		return id_user;
